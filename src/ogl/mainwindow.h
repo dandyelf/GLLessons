@@ -28,5 +28,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     s21::Controller *controller_obj_;
+    const s21::ObjT *obj_;
 };
 #endif // MAINWINDOW_H
