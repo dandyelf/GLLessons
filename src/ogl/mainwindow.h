@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QDate>
+#include <QFileDialog>
 #include "../controller/s21_controller_obj.h"
 
 QT_BEGIN_NAMESPACE

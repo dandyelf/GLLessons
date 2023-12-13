@@ -16,7 +16,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonFile_clicked()
 {
-
-    ui->openGLWidget->update();
+    QString path = "/home/";
+    QString file_name = QFileDialog::getOpenFileName(this, tr("Open Obj File"), path,
+                                                tr("OBJ Files (*.obj)"));
+      if (file_name != "") {
+          ui->lineEditFile->setText(file_name);
+          std::string string = file_name.toStdString();
+          controller_obj_->OpenObj(string.c_str());
+          qDebug() << "File OK" << string.c_str() << QDate::currentDate();
+          ui->openGLWidget->update();
+      }
 }
-

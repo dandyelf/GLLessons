@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.SetControllerObj(controller_obj);
     w.show();
-    if(facade_model_obj != nullptr) delete facade_model_obj;
+//    if(facade_model_obj != nullptr) delete facade_model_obj;
+    qDebug() << "File OK" << "Here" << QDate::currentDate();
     return a.exec();
 }
