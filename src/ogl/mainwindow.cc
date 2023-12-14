@@ -32,3 +32,7 @@ void MainWindow::on_pushButtonFile_clicked()
         }
     }
 }
+
+void MainWindow::draw() {
+
+}

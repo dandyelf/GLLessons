@@ -29,5 +29,7 @@ private:
     Ui::MainWindow *ui;
     s21::Controller *controller_obj_;
     const s21::ObjT *obj_;
+    // Private methods
+    void draw();
 };
 #endif // MAINWINDOW_H
