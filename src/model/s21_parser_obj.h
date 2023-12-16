@@ -18,6 +18,7 @@ typedef struct ObjT {
   int facet_elem{};
   std::vector<int> polygon_vector{};
   std::vector<double> vertex_vector{};
+  double max_el = 0.0, min_el = 0.0;
   friend class Facade;
 } ObjT;
 

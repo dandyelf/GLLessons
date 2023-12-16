@@ -14,16 +14,9 @@ void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
     throw std::runtime_error("Empty of fail file");
   }
   fclose(fp_);
-  obj_->count_of_vertexes = obj_->vertex_vector.size() / 3;
-  obj_->count_of_facets = obj_->polygon_vector.size() / 2;
-  obj_->polygons = obj_->polygon_vector.data();
-  obj_->vertexes = obj_->vertex_vector.data();
-  double max_el_ = 0.0;
-  for (int i = 0; i < obj_->count_of_vertexes; i++) {
-    if (max_el_ < obj_->vertexes[i]) max_el_ = obj_->vertexes[i];
-  }
-  for (int i = 0; i < (obj_->count_of_vertexes) * 3; i++) {
-    obj_->vertexes[i] /= max_el_;
+  for (const auto& element : obj_->vertex_vector) {
+    if (obj_->max_el < element) obj_->max_el = element;
+    if (obj_->min_el > element) obj_->max_el = element;
   }
 }
 
