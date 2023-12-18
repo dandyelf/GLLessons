@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonFile_clicked()
 {
-    QString path = "/home/";
+    QString path = "/home/leftrana/projects/GLLessons/src/tests/obj/";
     QString file_name = QFileDialog::getOpenFileName(this, tr("Open Obj File"), path,
                                                 tr("OBJ Files (*.obj)"));
     if (file_name != "") {
@@ -26,13 +26,13 @@ void MainWindow::on_pushButtonFile_clicked()
             controller_obj_->OpenObj(string.c_str());
             qDebug() << "File OK" << string.c_str() << QDate::currentDate();
             obj_ = &controller_obj_->GetObject();
-            ui->openGLWidget->update();
-        }  catch (std::exception e) {
+        }  catch (std::exception &e) {
         qDebug() << "Parce or file fail.";
         }
     }
+    draw();
 }
 
 void MainWindow::draw() {
-
+    ui->openGLWidget->update();
 }

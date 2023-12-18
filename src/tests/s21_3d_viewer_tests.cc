@@ -4,10 +4,12 @@
 
 namespace s21 {
 
+const std::string obj_path = TESTS_OBJ_PATH;
+
 TEST(MainTest, Cube) {
   s21::ObjT obj;
   s21::ParserObj parser;
-  const std::string file = "./tests/obj/Low-Poly-Racing-Car.obj";
+  const std::string file = obj_path + "/Low-Poly-Racing-Car.obj";
   parser.StartParser(file, &obj);
   EXPECT_EQ(obj.count_of_vertexes, 1485);
   EXPECT_EQ(obj.count_of_facets, 10608);
