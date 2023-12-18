@@ -25,7 +25,7 @@ void MainWindow::on_pushButtonFile_clicked()
             std::string string = file_name.toStdString();
             controller_obj_->OpenObj(string);
             qDebug() << "File OK" << string.c_str() << QDate::currentDate();
-            obj_ = &controller_obj_->GetObject();
+            obj_ = controller_obj_->GetObject();
         }  catch (std::exception &e) {
         qDebug() << "Parce or file fail.";
         }
