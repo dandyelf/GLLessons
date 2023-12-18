@@ -21,7 +21,9 @@ class Facade {
   void RotateObj(char axis, double value);
   void ScaleObj(char axis, double value);
   void MoveObj(char axis, double value);
-  const s21::ObjT& const GetObject() { return main_obj_; }
+  const s21::ObjT *GetObject() const noexcept {
+    return &main_obj_;
+  }
 
  private:
   ObjT main_obj_;

@@ -5,7 +5,8 @@
 
 const std::string obj_path = TESTS_OBJ_PATH;
 
-TEST(FacadeTest, GetDataObj) {
+TEST(ModelFacade, GetObj) {
   s21::Facade a;
   a.OpenObj(obj_path + "/tetrahedron.obj");
+  EXPECT_EQ(a.GetObject()->count_of_vertexes, 38);
 }

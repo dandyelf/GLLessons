@@ -5,15 +5,14 @@
 
 const std::string obj_path = TESTS_OBJ_PATH;
 
-TEST(MainTest, Skull) {
-  s21::ObjT obj;
-  s21::ObjT obj2;
-  s21::ParserObj parser;
+TEST(MainTest, Cubecarcas) {
+  s21::Facade facade;
   const std::string file = obj_path + "/cubecarcas.obj";
   try {
-    parser.StartParser(file, &obj);
+    facade.OpenObj(file);
   } catch (const std::exception& e) {
     std::cout << e.what() << '\n';
   }
-  // EXPECT_EQ(obj.count_of_facets, 9537);
+  const s21::ObjT *obj = facade.GetObject();
+  EXPECT_EQ(obj->count_of_facets, 432);
 }

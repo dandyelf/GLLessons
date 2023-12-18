@@ -35,7 +35,7 @@ open:
 
 tests:
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(MACRO) $(CXXFLAGS) $(GT_FLAGS) src/model/*.cc src/tests/*.cc -o $(BUILD_DIR)/$(UNIT)
+	$(CC) $(CXXFLAGS) $(GT_FLAGS) src/model/*.cc src/tests/*.cc -o $(BUILD_DIR)/$(UNIT)
 	./$(BUILD_DIR)/$(UNIT)
 
 valgrind: tests

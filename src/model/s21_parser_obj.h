@@ -10,7 +10,12 @@
 #include <vector>
 namespace s21 {
 
-typedef struct ObjT {
+class ObjT {
+  friend class AffTransform;
+  friend class Facade;
+  friend class ParserObj;
+  public:
+    ~ObjT(){};
   int count_of_vertexes{};
   double* vertexes{};
   int count_of_facets{};
@@ -18,8 +23,11 @@ typedef struct ObjT {
   int facet_elem{};
   std::vector<int> polygon_vector{};
   std::vector<double> vertex_vector{};
-  friend class Facade;
-} ObjT;
+  double max_el_{};
+  private:
+    ObjT(){};
+    
+};
 
 class ParserObj {
  public:

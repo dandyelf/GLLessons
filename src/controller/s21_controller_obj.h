@@ -6,18 +6,14 @@
 namespace s21 {
 class Controller {
  public:
+  Controller() = default;
   Controller(const Controller&) = delete;
   Controller(Controller&&) = delete;
   ~Controller() = default;
   Controller& operator=(const Controller&) = delete;
   Controller& operator=(Controller&&) = delete;
-  static Controller* getInstance() {
-    static Controller controller;
-    return &controller;
-  }
   void SetModel(s21::Facade* facade) { facade_ = facade; }
-  const s21::ObjT& GetObject() const { return facade_->GetObject(); }
-
+  const s21::ObjT* GetObject() const { return facade_->GetObject(); }
   void OpenObj(const std::string& file_name) { facade_->OpenObj(file_name); }
   void ResetObj() { facade_->ResetObj(); }
   void RotateObj(char axis, double value) { facade_->RotateObj(axis, value); }
@@ -25,8 +21,6 @@ class Controller {
   void MoveObj(char axis, double value) { facade_->MoveObj(axis, value); }
 
  private:
-  Controller() = default;
-  static Controller* controller_;
   s21::Facade* facade_;
 };
 }  // namespace s21
