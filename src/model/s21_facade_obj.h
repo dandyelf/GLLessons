@@ -29,6 +29,7 @@ class Facade {
   ObjT main_obj_;
   ObjT rotate_obj_;
   s21::ParserObj parcer_obj_;
+  s21::AffTransform aff_transform_;
 };
 }  // namespace s21
 

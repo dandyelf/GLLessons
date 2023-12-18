@@ -23,7 +23,7 @@ void MainWindow::on_pushButtonFile_clicked()
         try {
             ui->lineEditFile->setText(file_name);
             std::string string = file_name.toStdString();
-            controller_obj_->OpenObj(string.c_str());
+            controller_obj_->OpenObj(string);
             qDebug() << "File OK" << string.c_str() << QDate::currentDate();
             obj_ = &controller_obj_->GetObject();
         }  catch (std::exception &e) {

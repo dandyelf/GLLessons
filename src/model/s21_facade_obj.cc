@@ -23,25 +23,25 @@ void Facade::ResetObj() {
 }
 
 void Facade::RotateObj(char axis, double value) {
-  s21::AffTransform aff_transform(&main_obj_);
-  if (axis == 'x') aff_transform.TurnX(value);
-  if (axis == 'y') aff_transform.TurnY(value);
-  if (axis == 'z') aff_transform.TurnZ(value);
+  aff_transform_.InitObjStruct(&main_obj_);
+  if (axis == 'x') aff_transform_.TurnX(value);
+  if (axis == 'y') aff_transform_.TurnY(value);
+  if (axis == 'z') aff_transform_.TurnZ(value);
 }
 
 void Facade::ScaleObj(char axis, double value) {
-  s21::AffTransform aff_transform(&main_obj_);
-  if (axis == '0') aff_transform.Scale(value);
-  if (axis == 'x') aff_transform.ScaleX(value);
-  if (axis == 'y') aff_transform.ScaleY(value);
-  if (axis == 'z') aff_transform.ScaleZ(value);
+  aff_transform_.InitObjStruct(&main_obj_);
+  if (axis == '0') aff_transform_.Scale(value);
+  if (axis == 'x') aff_transform_.ScaleX(value);
+  if (axis == 'y') aff_transform_.ScaleY(value);
+  if (axis == 'z') aff_transform_.ScaleZ(value);
 }
 
 void Facade::MoveObj(char axis, double value) {
-  s21::AffTransform aff_transform(&main_obj_);
-  if (axis == 'x') aff_transform.MoveX(value);
-  if (axis == 'y') aff_transform.MoveY(value);
-  if (axis == 'z') aff_transform.MoveZ(value);
+  aff_transform_.InitObjStruct(&main_obj_);
+  if (axis == 'x') aff_transform_.MoveX(value);
+  if (axis == 'y') aff_transform_.MoveY(value);
+  if (axis == 'z') aff_transform_.MoveZ(value);
 }
 
 }  // namespace s21
