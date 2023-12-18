@@ -12,14 +12,10 @@ void Facade::OpenObj(const std::string& file_name) {
   }
   main_obj_ = std::move(tmp);
   rotate_obj_ = main_obj_;
-  rotate_obj_.vertexes = rotate_obj_.vertex_vector.data();
-  rotate_obj_.polygons = rotate_obj_.polygon_vector.data();
 }
 
 void Facade::ResetObj() {
   main_obj_ = rotate_obj_;
-  main_obj_.vertexes = main_obj_.vertex_vector.data();
-  main_obj_.polygons = main_obj_.polygon_vector.data();
 }
 
 void Facade::RotateObj(char axis, double value) {

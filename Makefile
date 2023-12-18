@@ -1,10 +1,10 @@
 CC = gcc
-CXXFLAGS = -std=c++17 -DTESTS_OBJ_PATH="\"/home/leftrana/projects/GLLessons/src/tests/obj\"" -Wall -Werror -Wextra
+CXXFLAGS = -std=c++17 -Wall -Werror -Wextra
 GCOV = --coverage
 UNIT = model_tests.out
 OS = $(shell uname -s)
 GT_FLAGS = -lgtest_main -lgtest -lm -lstdc++ -pthread -lm -g
-MACRO = -DTESTS_OBJ_PATH="\"/home/leftrana/projects/GLLessons/src/tests/obj\""
+MACRO = -DTESTS_OBJ_PATH="\"/home/dandy/projects/GLLessons/src/obj\""
 
 #  Project files and directories
 BUILD_DIR = build
@@ -35,7 +35,7 @@ open:
 
 tests:
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CXXFLAGS) $(GT_FLAGS) src/model/*.cc src/tests/*.cc -o $(BUILD_DIR)/$(UNIT)
+	$(CC) $(CXXFLAGS) $(MACRO) $(GT_FLAGS) src/model/*.cc src/tests/*.cc -o $(BUILD_DIR)/$(UNIT)
 	./$(BUILD_DIR)/$(UNIT)
 
 valgrind: tests
