@@ -4,21 +4,36 @@ namespace s21 {
 
 void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   obj_ = obj;
-  fp_ = fopen(file_name.c_str(), "r");
-  if (fp_ == NULL) {
+  file_obj_.open(file_name);
+  fp_ = fopen(file_name.c_str(), "r"); // old version
+  if (!file_obj_.is_open()) {
     throw std::runtime_error("File fail");
   }
   ParsObj();
   if (obj_->vertex_vector.size() < 3 || obj_->polygon_vector.size() < 1) {
-    fclose(fp_);
+    file_obj_.close();
+    fclose(fp_); // Old version
     throw std::runtime_error("Empty of fail file");
   }
-  fclose(fp_);
+  fclose(fp_); // old version
+  file_obj_.close();
   obj_->count_of_vertexes = obj_->vertex_vector.size() / 3;
   obj_->count_of_facets = obj_->polygon_vector.size() / 2;
-  for (int i = 0; i < obj_->count_of_vertexes; i++) {
-    if (obj_->max_el_ < obj_->vertex_vector[i]) obj_->max_el_ = obj_->vertex_vector[i];
+  obj_->max_el_ = obj_->vertex_vector[0];
+  obj_->min_el_ = obj_->vertex_vector[0];
+  for (auto element : obj_->vertex_vector) {
+    if (obj_->max_el_ < element) obj_->max_el_ = element;
+    if (obj_->min_el_ > element) obj_->min_el_ = element;
   }
+  int max_vertex;
+  for (auto element : obj_->polygon_vector) {
+    if (max_vertex < element) max_vertex = element;
+  }
+  if (max_vertex > obj_->count_of_vertexes)
+  {
+    throw std::runtime_error("On vertex " + max_vertex);
+  }
+  
 }
 
 void ParserObj::ParsObj() {
@@ -91,7 +106,6 @@ void ParserObj::SortInsert(const std::vector<int> &in) {
     }
   }
   PutOutVector(in[0]);
-  obj_->facet_elem += in.size() * 2;
 }
 
 void ParserObj::PutOutVector(int a) {

@@ -15,16 +15,15 @@ class ObjT {
   friend class Facade;
   friend class ParserObj;
   public:
-    ~ObjT(){};
-  int count_of_vertexes{};
-  int count_of_facets{};
-  int facet_elem{};
+  ~ObjT(){};
   std::vector<int> polygon_vector{};
   std::vector<double> vertex_vector{};
+  int count_of_vertexes{};
+  int count_of_facets{};
   double max_el_{};
+  double min_el_{};
   private:
     ObjT(){};
-    
 };
 
 class ParserObj {
@@ -46,6 +45,7 @@ class ParserObj {
  private:
   ObjT* obj_;
   FILE* fp_;
+  std::ifstream file_obj_;
 };
 
 }  // namespace s21
