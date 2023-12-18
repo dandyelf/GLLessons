@@ -33,6 +33,7 @@ class ParserObj {
   ParserObj(ParserObj&&) = delete;
   ~ParserObj() = default;
   void StartParser(const std::string& file_name, ObjT* obj);
+  void InitObj();
   void ParsObj();
   void VertexLineCheck();
   void ParsLineVertex();

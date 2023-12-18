@@ -1,11 +1,12 @@
 #include "s21_parser_obj.h"
+#include <iostream>
 
 namespace s21 {
 
 void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   obj_ = obj;
-  file_obj_.open(file_name);
   fp_ = fopen(file_name.c_str(), "r"); // old version
+  file_obj_.open(file_name);
   if (!file_obj_.is_open()) {
     throw std::runtime_error("File fail");
   }
@@ -17,6 +18,10 @@ void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   }
   fclose(fp_); // old version
   file_obj_.close();
+  InitObj();
+}
+
+void ParserObj::InitObj() {
   obj_->count_of_vertexes = obj_->vertex_vector.size() / 3;
   obj_->count_of_facets = obj_->polygon_vector.size() / 2;
   obj_->max_el_ = obj_->vertex_vector[0];
@@ -25,7 +30,7 @@ void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
     if (obj_->max_el_ < element) obj_->max_el_ = element;
     if (obj_->min_el_ > element) obj_->min_el_ = element;
   }
-  int max_vertex;
+  int max_vertex = obj_->polygon_vector[0];
   for (auto element : obj_->polygon_vector) {
     if (max_vertex < element) max_vertex = element;
   }
@@ -33,7 +38,6 @@ void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   {
     throw std::runtime_error("On vertex " + max_vertex);
   }
-  
 }
 
 void ParserObj::ParsObj() {
