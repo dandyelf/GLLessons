@@ -6,18 +6,15 @@ namespace s21 {
 void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   obj_ = obj;
   fp_ = fopen(file_name.c_str(), "r"); // old version
-  file_obj_.open(file_name);
-  if (!file_obj_.is_open()) {
+  if (!fp_) {
     throw std::runtime_error("File fail");
   }
   ParsObj();
   if (obj_->vertex_vector.size() < 3 || obj_->polygon_vector.size() < 1) {
-    file_obj_.close();
     fclose(fp_); // Old version
     throw std::runtime_error("Empty of fail file");
   }
   fclose(fp_); // old version
-  file_obj_.close();
   InitObj();
 }
 

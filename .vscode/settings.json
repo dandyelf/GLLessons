@@ -1,0 +1,10 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/leftrana/projects/GLLessons/build",
+            "binaryPath": "/home/leftrana/projects/GLLessons/build/model_tests.out",
+            "binaryArgs": [],
+            "makefile": "${workspaceFolder}/Makefile"
+        }
+    ]
+}
