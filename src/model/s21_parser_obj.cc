@@ -30,7 +30,7 @@ std::string line;
       ParsLineVertex(iss);
     }
     if (lineHeader == "f") {
-      ParsLineFacet(line);
+      ParsLineFacet(iss);
     }
   }
 }
@@ -63,24 +63,15 @@ void ParserObj::InitObj() {
   }
 }
 
-void ParserObj::ParsLineFacet(std::string &str) {
+void ParserObj::ParsLineFacet(std::istringstream& iss) {
   std::vector<int> tmp_vec;
-  std::size_t i{};
-  while (i < str.size()) {
-    if (str[i] == ' ' || str[i] == 'f') {
-      i++;
-      continue;
-    }
-    std::string tmp;
-    for (; i < str.size() && str[i] != ' '; i++) {
-      tmp.push_back(str[i]);
-    }
+  std::string tmp;
+  while (iss >> tmp) {
     tmp_vec.push_back(std::stoi(tmp));
-    i++;
   }
   if (tmp_vec.size() > 2) {
     SortInsert(tmp_vec);
-  }
+  } // else push error if need
 }
 
 void ParserObj::SortInsert(const std::vector<int> &in) {

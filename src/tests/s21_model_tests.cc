@@ -16,3 +16,9 @@ TEST(ModelFacade, StartOpen) {
   a.OpenObj(obj_path + "/tetrahedron.obj");
   EXPECT_EQ(a.GetObject()->count_of_vertexes, 38);
 }
+
+TEST(ModelFacade, Skull) {
+  s21::Facade a;
+  a.OpenObj(obj_path + "/skull.obj");
+  EXPECT_EQ(a.GetObject()->count_of_vertexes, 6122);
+}
