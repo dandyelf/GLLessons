@@ -38,6 +38,9 @@ tests:
 	$(CC) $(CXXFLAGS) $(MACRO) $(GT_FLAGS) src/model/*.cc src/tests/*.cc -o $(BUILD_DIR)/$(UNIT)
 	./$(BUILD_DIR)/$(UNIT)
 
+t:
+	./$(BUILD_DIR)/$(UNIT)
+
 valgrind: tests
 	CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(BUILD_DIR)/$(UNIT)
 
