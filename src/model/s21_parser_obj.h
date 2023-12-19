@@ -32,6 +32,7 @@ class ParserObj {
   ParserObj(const ParserObj&) = delete;
   ParserObj(ParserObj&&) = delete;
   ~ParserObj() = default;
+  void StartOpen(const std::string& file_name, ObjT* obj);
   void StartParser(const std::string& file_name, ObjT* obj);
   void InitObj();
   void ParsObj();

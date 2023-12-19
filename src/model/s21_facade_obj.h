@@ -24,6 +24,7 @@ class Facade {
   const s21::ObjT *GetObject() const noexcept {
     return &main_obj_;
   }
+  void Open(const std::string& file_name);
 
  private:
   ObjT main_obj_;

@@ -3,6 +3,14 @@
 
 namespace s21 {
 
+void ParserObj::StartOpen(const std::string& file_name, ObjT* obj) {
+  obj_ = obj;
+  file_obj_.open(file_name);
+  if (!file_obj_.is_open()) {
+    throw std::runtime_error("File fail");
+  }
+}
+
 void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
   obj_ = obj;
   fp_ = fopen(file_name.c_str(), "r"); // old version

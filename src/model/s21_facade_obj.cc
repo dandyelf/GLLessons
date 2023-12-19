@@ -40,4 +40,16 @@ void Facade::MoveObj(char axis, double value) {
   if (axis == 'z') aff_transform_.MoveZ(value);
 }
 
+void Facade::Open(const std::string& file_name) {
+    ObjT tmp;
+  try {
+    parcer_obj_.StartOpen(file_name, &tmp);
+  } catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+    throw;
+  }
+  main_obj_ = std::move(tmp);
+  rotate_obj_ = main_obj_;
+}
+
 }  // namespace s21
