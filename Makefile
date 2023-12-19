@@ -4,7 +4,7 @@ GCOV = --coverage
 UNIT = model_tests.out
 OS = $(shell uname -s)
 GT_FLAGS = -lgtest_main -lgtest -lm -lstdc++ -pthread -lm -g
-MACRO = -DTESTS_OBJ_PATH="\"/home/dandy/projects/GLLessons/src/obj\""
+MACRO := -DTESTS_OBJ_PATH='"$(shell pwd)/src/tests/obj"'
 
 #  Project files and directories
 BUILD_DIR = build
