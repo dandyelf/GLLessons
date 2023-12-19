@@ -1,5 +1,6 @@
 #include "s21_parser_obj.h"
 #include <iostream>
+#include <sstream>
 
 namespace s21 {
 
@@ -9,21 +10,38 @@ void ParserObj::StartOpen(const std::string& file_name, ObjT* obj) {
   if (!file_obj_.is_open()) {
     throw std::runtime_error("File fail");
   }
-}
-
-void ParserObj::StartParser(const std::string &file_name, ObjT *obj) {
-  obj_ = obj;
-  fp_ = fopen(file_name.c_str(), "r"); // old version
-  if (!fp_) {
-    throw std::runtime_error("File fail");
-  }
-  ParsObj();
+  Pars();
   if (obj_->vertex_vector.size() < 3 || obj_->polygon_vector.size() < 1) {
-    fclose(fp_); // Old version
+    file_obj_.close();
     throw std::runtime_error("Empty of fail file");
   }
-  fclose(fp_); // old version
+  file_obj_.close();
   InitObj();
+}
+
+void ParserObj::Pars() {
+std::string line;
+  while (std::getline(file_obj_, line))
+  {
+    std::istringstream iss(line);
+    std::string lineHeader;
+    iss >> lineHeader;
+    if (lineHeader == "v") {
+      ParsLineVertex(iss);
+    }
+    if (lineHeader == "f") {
+      ParsLineFacet(line);
+    }
+  }
+}
+
+void ParserObj::ParsLineVertex(std::istringstream& iss) {
+  double x, y, z;
+  if ((iss >> x >> y >> z)) {
+    obj_->vertex_vector.push_back(x);
+    obj_->vertex_vector.push_back(y);
+    obj_->vertex_vector.push_back(z);
+  } // else error check if need
 }
 
 void ParserObj::InitObj() {
@@ -45,54 +63,11 @@ void ParserObj::InitObj() {
   }
 }
 
-void ParserObj::ParsObj() {
-  while (1) {
-    char lineHeader[128];
-    int res = fscanf(fp_, "%s", lineHeader);
-    if (res == EOF) break;
-    if (strcmp(lineHeader, "v") == 0) {
-      VertexLineCheck();
-    }
-    if (strcmp(lineHeader, "f") == 0) {
-      FacetLineCheck();
-    }
-  }
-}
-
-void ParserObj::VertexLineCheck() { ParsLineVertex(); }
-
-void ParserObj::ParsLineVertex() {
-  double x, y, z;
-  int matches = fscanf(fp_, "%lf %lf %lf\n", &x, &y, &z);
-  if (matches == 3) {
-    obj_->vertex_vector.push_back(x);
-    obj_->vertex_vector.push_back(y);
-    obj_->vertex_vector.push_back(z);
-  } else {
-    fp_++;
-  }
-}
-
-void ParserObj::FacetLineCheck() {
-  std::string tmp = LineCreator("1234567890-/ ");
-  ParsLineFacet(tmp);
-}
-
-std::string ParserObj::LineCreator(const std::string &dictionary) {
-  std::string tmp;
-  char get = fgetc(fp_);
-  while (dictionary.find(get) != std::string::npos && get != EOF) {
-    tmp.push_back(get);
-    get = fgetc(fp_);
-  }
-  return tmp;
-}
-
 void ParserObj::ParsLineFacet(std::string &str) {
   std::vector<int> tmp_vec;
   std::size_t i{};
   while (i < str.size()) {
-    if (str[i] == ' ') {
+    if (str[i] == ' ' || str[i] == 'f') {
       i++;
       continue;
     }

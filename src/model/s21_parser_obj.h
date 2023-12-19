@@ -33,20 +33,15 @@ class ParserObj {
   ParserObj(ParserObj&&) = delete;
   ~ParserObj() = default;
   void StartOpen(const std::string& file_name, ObjT* obj);
-  void StartParser(const std::string& file_name, ObjT* obj);
+  void Pars();
+  void ParsLineVertex(std::istringstream& iss);
   void InitObj();
-  void ParsObj();
-  void VertexLineCheck();
-  void ParsLineVertex();
-  void FacetLineCheck();
-  std::string LineCreator(const std::string& dictionary);
   void ParsLineFacet(std::string& str);
   void SortInsert(const std::vector<int>& in);
   void PutOutVector(int a);
 
  private:
   ObjT* obj_;
-  FILE* fp_;
   std::ifstream file_obj_;
 };
 

@@ -6,5 +6,8 @@
             "binaryArgs": [],
             "makefile": "${workspaceFolder}/Makefile"
         }
-    ]
+    ],
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
 }

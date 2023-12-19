@@ -3,9 +3,9 @@
 namespace s21 {
 
 void Facade::OpenObj(const std::string& file_name) {
-  ObjT tmp;
+    ObjT tmp;
   try {
-    parcer_obj_.StartParser(file_name, &tmp);
+    parcer_obj_.StartOpen(file_name, &tmp);
   } catch (const std::exception& e) {
     std::cout << e.what() << std::endl;
     throw;
@@ -38,18 +38,6 @@ void Facade::MoveObj(char axis, double value) {
   if (axis == 'x') aff_transform_.MoveX(value);
   if (axis == 'y') aff_transform_.MoveY(value);
   if (axis == 'z') aff_transform_.MoveZ(value);
-}
-
-void Facade::Open(const std::string& file_name) {
-    ObjT tmp;
-  try {
-    parcer_obj_.StartOpen(file_name, &tmp);
-  } catch (const std::exception& e) {
-    std::cout << e.what() << std::endl;
-    throw;
-  }
-  main_obj_ = std::move(tmp);
-  rotate_obj_ = main_obj_;
 }
 
 }  // namespace s21
