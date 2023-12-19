@@ -44,6 +44,9 @@ t:
 valgrind: tests
 	CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(BUILD_DIR)/$(UNIT)
 
+v: install
+	CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(BUILD_DIR)/$(APPLICATION)
+
 clang:
 	clang-format -style=file:./materials/linters/.clang-format -n ./*.cc $(FOLDERS)
 	clang-format -style=file:./materials/linters/.clang-format -i ./*.cc $(FOLDERS)
