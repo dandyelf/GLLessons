@@ -14,6 +14,7 @@ class Paint {
 
  private:
   Ui::MainWindow *mainwindow_;
+  void Draw();
 };
 }  // namespace Sc
 
