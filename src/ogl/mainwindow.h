@@ -7,7 +7,6 @@
 #include <QMouseEvent>
 
 #include "../controller/s21_controller_obj.h"
-#include "paint.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +23,7 @@ class MainWindow : public QMainWindow {
   void SetControllerObj(s21::Controller *controller_obj) {
     controller_obj_ = controller_obj;
   }
+  void Draw();
 
  private slots:
   void on_pushButtonFile_clicked();
@@ -32,8 +32,6 @@ class MainWindow : public QMainWindow {
   Ui::MainWindow *ui;
   s21::Controller *controller_obj_;
   const s21::ObjT *obj_;
-  Sc::Paint *paint_;
   // Private methods
-  void draw();
 };
 #endif  // MAINWINDOW_H_

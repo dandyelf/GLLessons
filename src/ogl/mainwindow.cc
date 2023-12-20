@@ -5,7 +5,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  paint_ = new Sc::Paint(ui);
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -25,7 +24,28 @@ void MainWindow::on_pushButtonFile_clicked() {
       qDebug() << "Parce or file fail.";
     }
   }
-  draw();
+  Draw();
 }
 
-void MainWindow::draw() { ui->openGLWidget->update(); }
+void MainWindow::Draw() {
+        ui->openGLWidget->makeCurrent();
+    QSize viewport_size = size();
+    glViewport(0, 0, viewport_size.width(), viewport_size.height());
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glFrustum(-1, 1, -1, 1, 5, 7); // near and far match your triangle Z distance
+
+    glMatrixMode(GL_MODELVIEW);
+
+    glBegin(GL_TRIANGLES);
+     glVertex3f( 0.0f, 1.0f, 0.0f);
+     glVertex3f(-1.0f,-1.0f, 0.0f);
+     glVertex3f( 1.0f,-1.0f, 0.0f);
+    glEnd();
+//    ui->openGLWidget->makeCurrent();
+//    glVertexPointer(3, GL_DOUBLE, 0, obj_->vertex_vector.data());
+//    glEnableClientState(GL_VERTEX_ARRAY);
+//    glColor3f(1, 0, 1);
+//    glDrawElements(GL_LINES, obj_->count_of_facets, GL_UNSIGNED_INT, obj_->polygon_vector.data());
+}
