@@ -33,6 +33,7 @@ void MainWindow::on_pushButtonFile_clicked()
     draw();
 }
 
+
 void MainWindow::draw() {
     ui->openGLWidget->update();
 }

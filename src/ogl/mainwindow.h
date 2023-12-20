@@ -1,15 +1,16 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_H_
+#define MAINWINDOW_H_
 
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QDate>
 #include <QFileDialog>
 #include "../controller/s21_controller_obj.h"
+#include "paint.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+QT_END_NAMESPACE   
 
 class MainWindow : public QMainWindow
 {
@@ -29,7 +30,8 @@ private:
     Ui::MainWindow *ui;
     s21::Controller *controller_obj_;
     const s21::ObjT *obj_;
+
     // Private methods
     void draw();
 };
-#endif // MAINWINDOW_H
+#endif // MAINWINDOW_H_

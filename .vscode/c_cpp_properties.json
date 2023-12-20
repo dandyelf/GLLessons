@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/x86_64-linux-gnu/qt6/**",
-                "${workspaceFolder}/build"
+                "${workspaceFolder}/build",
+                "/usr/include/x86_64-linux-gnu/qt6/QtWidgets"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
