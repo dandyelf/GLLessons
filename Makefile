@@ -1,13 +1,12 @@
 CC = gcc
-CXXFLAGS = -std=c++17 -Wall -Werror -Wextra
+CXXFLAGS = -std=c++17 -DTESTS_OBJ_PATH='"$(shell pwd)/src/tests/obj"' -Wall -Werror -Wextra
 GCOV = --coverage
 UNIT = model_tests.out
 OS = $(shell uname -s)
 GT_FLAGS = -lgtest_main -lgtest -lm -lstdc++ -pthread -lm -g
-MACRO := -DTESTS_OBJ_PATH='"$(shell pwd)/src/tests/obj"'
 
 #  Project files and directories
-BUILD_DIR = build
+BUILD_DIR = build 
 FOLDERS = src/controller/*.h src/model/*.h src/model/*.cc src/tests/*.cc src/ogl/*.h src/ogl/*.cc
 
 ifeq ($(OS), Darwin)
@@ -48,5 +47,5 @@ v: install
 	CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(BUILD_DIR)/$(APPLICATION)
 
 clang:
-	clang-format -style=file:./materials/linters/.clang-format -n ./*.cc $(FOLDERS)
-	clang-format -style=file:./materials/linters/.clang-format -i ./*.cc $(FOLDERS)
+	clang-format -style=file:./materials/linters/.clang-format -n $(FOLDERS)
+	clang-format -style=file:./materials/linters/.clang-format -i $(FOLDERS)

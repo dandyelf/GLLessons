@@ -1,4 +1,5 @@
 #include "s21_parser_obj.h"
+
 #include <iostream>
 #include <sstream>
 
@@ -20,9 +21,8 @@ void ParserObj::StartOpen(const std::string& file_name, ObjT* obj) {
 }
 
 void ParserObj::Pars() {
-std::string line;
-  while (std::getline(file_obj_, line))
-  {
+  std::string line;
+  while (std::getline(file_obj_, line)) {
     std::istringstream iss(line);
     std::string lineHeader;
     iss >> lineHeader;
@@ -41,7 +41,7 @@ void ParserObj::ParsLineVertex(std::istringstream& iss) {
     obj_->vertex_vector.push_back(x);
     obj_->vertex_vector.push_back(y);
     obj_->vertex_vector.push_back(z);
-  } // else error check if need
+  }  // else error check if need
 }
 
 void ParserObj::InitObj() {
@@ -57,9 +57,8 @@ void ParserObj::InitObj() {
   for (auto element : obj_->polygon_vector) {
     if (max_vertex < element) max_vertex = element;
   }
-  if (max_vertex > obj_->count_of_vertexes)
-  {
-    throw std::runtime_error("On vertex " + max_vertex);
+  if (max_vertex > obj_->count_of_vertexes) {
+    throw std::runtime_error("On vertex " + std::to_string(max_vertex));
   }
 }
 
@@ -71,10 +70,10 @@ void ParserObj::ParsLineFacet(std::istringstream& iss) {
   }
   if (tmp_vec.size() > 2) {
     SortInsert(tmp_vec);
-  } // else push error if need
+  }  // else push error if need
 }
 
-void ParserObj::SortInsert(const std::vector<int> &in) {
+void ParserObj::SortInsert(const std::vector<int>& in) {
   for (size_t i = 0; i < in.size(); i++) {
     for (size_t j = i; j <= i + 1 && (j + 1) <= in.size(); j++) {
       PutOutVector(in[j]);
@@ -90,7 +89,9 @@ void ParserObj::PutOutVector(int a) {
   } else {
     b = a;
   }
-  obj_->polygon_vector.push_back(b - 1);
+  if (b >= 0) {
+    obj_->polygon_vector.push_back(b - 1);
+  }  //  else push error if need
 }
 
 }  // namespace s21

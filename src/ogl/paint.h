@@ -1,31 +1,20 @@
-#ifndef MAINWINDOW_H_
-#define MAINWINDOW_H_
+#ifndef PAINT_H_
+#define PAINT_H_
 
-#include <QMainWindow>
-#include <QFileDialog>
+namespace Ui {
+class MainWindow;
+}
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class Paint; }
-QT_END_NAMESPACE
+namespace Sc {
 
-class Paint : public QMainWindow
-{
-    Q_OBJECT
+class Paint {
+ public:
+  Paint(Ui::MainWindow *parent = nullptr) { mainwindow_ = parent; }
+  ~Paint() {}
 
-public:
-    Paint(QWidget *parent = nullptr){ui_ = parent;}
-    Paint(const Paint&) = delete;
-    Paint(Paint&&) = delete;
-    ~Paint(){}
-    Paint& operator=(const Paint&) = delete;
-    Paint& operator=(Paint&&) = delete;    
-
-private slots:
-
-
-private:
-    QWidget *ui_;
-    // Private methods
+ private:
+  Ui::MainWindow *mainwindow_;
 };
+}  // namespace Sc
 
-#endif // MAINWINDOW_H_
+#endif  // PAINT_H_

@@ -16,14 +16,16 @@ SOURCES += \
     ../model/s21_facade_obj.cc \
     ../model/s21_parser_obj.cc \
     main.cc \
-    mainwindow.cc
+    mainwindow.cc \
+    paint.cc
 
 HEADERS += \
     ../controller/s21_controller_obj.h \
     ../model/s21_aff_transform.h \
     ../model/s21_facade_obj.h \
     ../model/s21_parser_obj.h \
-    mainwindow.h
+    mainwindow.h \
+    paint.h
 
 FORMS += \
     mainwindow.ui

@@ -14,7 +14,8 @@ class ObjT {
   friend class AffTransform;
   friend class Facade;
   friend class ParserObj;
-  public:
+
+ public:
   ~ObjT(){};
   std::vector<int> polygon_vector{};
   std::vector<double> vertex_vector{};
@@ -22,8 +23,9 @@ class ObjT {
   int count_of_facets{};
   double max_el_{};
   double min_el_{};
-  private:
-    ObjT(){};
+
+ private:
+  ObjT(){};
 };
 
 class ParserObj {

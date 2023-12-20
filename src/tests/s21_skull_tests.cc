@@ -13,6 +13,6 @@ TEST(MainTest, Cubecarcas) {
   } catch (const std::exception& e) {
     std::cout << e.what() << '\n';
   }
-  const s21::ObjT *obj = facade.GetObject();
+  const s21::ObjT* obj = facade.GetObject();
   EXPECT_EQ(obj->count_of_facets, 432);
 }

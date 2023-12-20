@@ -35,11 +35,15 @@ TEST(ControllerTest, TurnX) {
   const std::string file = obj_path + "/Low-Poly-Racing-Car.obj";
   controller_obj.SetModel(&facade);
   controller_obj.OpenObj(file);
-  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[1], 2.1189444065093999);
-  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[2], -5.0422310829162598);
+  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[1],
+                   2.1189444065093999);
+  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[2],
+                   -5.0422310829162598);
   controller_obj.RotateObj('x', 5.0);
-  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[1], 1.6714217881790148);
-  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[2], -5.207722044944874);
+  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[1],
+                   1.6714217881790148);
+  EXPECT_DOUBLE_EQ(controller_obj.GetObject()->vertex_vector[2],
+                   -5.207722044944874);
 }
 
 TEST(ControllerTest, ScaleX) {

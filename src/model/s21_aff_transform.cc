@@ -57,7 +57,7 @@ void AffTransform::MoveX(double mv) {
       obj_t_->vertex_vector[i] += mv;
     }
   }
-  if(mv) return;
+  if (mv) return;
 }
 
 void AffTransform::MoveY(double mv) {
@@ -90,8 +90,10 @@ void AffTransform::TurnX(double angle) {
     for (int i = 0; i < obj_t_->count_of_vertexes * 3; i += 3) {
       temp_y_ = obj_t_->vertex_vector[i + 1];
       temp_z_ = obj_t_->vertex_vector[i + 2];
-      obj_t_->vertex_vector[i + 1] = temp_y_ * cos(angle) + temp_z_ * sin(angle);
-      obj_t_->vertex_vector[i + 2] = -temp_y_ * sin(angle) + temp_z_ * cos(angle);
+      obj_t_->vertex_vector[i + 1] =
+          temp_y_ * cos(angle) + temp_z_ * sin(angle);
+      obj_t_->vertex_vector[i + 2] =
+          -temp_y_ * sin(angle) + temp_z_ * cos(angle);
     }
   }
 }
@@ -103,7 +105,8 @@ void AffTransform::TurnY(double angle) {
       temp_x_ = obj_t_->vertex_vector[i];
       temp_z_ = obj_t_->vertex_vector[i + 2];
       obj_t_->vertex_vector[i] = temp_x_ * cos(angle) + temp_z_ * sin(angle);
-      obj_t_->vertex_vector[i + 2] = -temp_x_ * sin(angle) + temp_z_ * cos(angle);
+      obj_t_->vertex_vector[i + 2] =
+          -temp_x_ * sin(angle) + temp_z_ * cos(angle);
     }
   }
 }
@@ -115,7 +118,8 @@ void AffTransform::TurnZ(double angle) {
       temp_x_ = obj_t_->vertex_vector[i];
       temp_y_ = obj_t_->vertex_vector[i + 1];
       obj_t_->vertex_vector[i] = temp_x_ * cos(angle) + temp_y_ * sin(angle);
-      obj_t_->vertex_vector[i + 1] = -temp_x_ * sin(angle) + temp_y_ * cos(angle);
+      obj_t_->vertex_vector[i + 1] =
+          -temp_x_ * sin(angle) + temp_y_ * cos(angle);
     }
   }
 }

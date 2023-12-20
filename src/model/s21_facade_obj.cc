@@ -3,7 +3,7 @@
 namespace s21 {
 
 void Facade::OpenObj(const std::string& file_name) {
-    ObjT tmp;
+  ObjT tmp;
   try {
     parcer_obj_.StartOpen(file_name, &tmp);
   } catch (const std::exception& e) {
@@ -14,9 +14,7 @@ void Facade::OpenObj(const std::string& file_name) {
   rotate_obj_ = main_obj_;
 }
 
-void Facade::ResetObj() {
-  main_obj_ = rotate_obj_;
-}
+void Facade::ResetObj() { main_obj_ = rotate_obj_; }
 
 void Facade::RotateObj(char axis, double value) {
   aff_transform_.InitObjStruct(&main_obj_);
