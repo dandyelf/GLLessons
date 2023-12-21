@@ -27,7 +27,7 @@ install: clean
 	make open
 
 clean:
-	rm -rf *.o *.a *.gc* *.info build report *dSYM $(UNIT) *tgz gcov_test $(BUILD_DIR)/*
+	rm ./$(BUILD_DIR)/*
 
 open:
 	cd $(BUILD_DIR) && $(OPEN)
