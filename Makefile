@@ -6,7 +6,7 @@ OS = $(shell uname -s)
 GT_FLAGS = -lgtest_main -lgtest -lm -lstdc++ -pthread -lm -g
 
 #  Project files and directories
-BUILD_DIR = build 
+BUILD_DIR = build
 FOLDERS = src/controller/*.h src/model/*.h src/model/*.cc src/tests/*.cc src/ogl/*.h src/ogl/*.cc
 
 ifeq ($(OS), Darwin)
@@ -27,7 +27,7 @@ install: clean
 	make open
 
 clean:
-	rm ./$(BUILD_DIR)/*
+	rm -r ./$(BUILD_DIR)
 
 open:
 	cd $(BUILD_DIR) && $(OPEN)
