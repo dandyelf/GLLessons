@@ -10,8 +10,8 @@ BUILD_DIR = build
 FOLDERS = src/controller/*.h src/model/*.h src/model/*.cc src/tests/*.cc src/ogl/*.h src/ogl/*.cc
 
 ifeq ($(OS), Darwin)
-    LIBS := -lcheck 
-	APPLICATION = ogl.app 
+    LIBS := -lcheck
+	APPLICATION = ogl.app
 	OPEN = open $(APPLICATION)
 else
     LIBS := -lgtest -lstdc++ -lcheck_pic -lrt -lpthread -lsubunit -lm -g
@@ -19,9 +19,9 @@ else
 	OPEN = ./$(APPLICATION)
 endif
 
-all: clean install
+all: install
 
-install: clean
+install:
 	mkdir -p $(BUILD_DIR)
 	cd $(BUILD_DIR) && qmake CONFIG+=qtquickcompiler ../src/ogl/ogl.pro && make
 	make open
