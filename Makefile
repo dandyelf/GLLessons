@@ -1,3 +1,15 @@
+# Project based on Qt lib on Qt Creator
+# On Ubumtu some lib need to install
+# sudo apt install build-essential mesa-common-dev cmake clang qtcreator 
+# qt6-base-dev qml-qt6
+# Some commands must be used
+# sudo update-alternatives --install /usr/bin/qmake qmake /usr/bin/qmake6 100
+# sudo update-alternatives --config qmake
+# 
+# 
+# 
+# 
+
 CC = gcc
 CXXFLAGS = -std=c++17 -DTESTS_OBJ_PATH='"$(shell pwd)/src/tests/obj"' -Wall -Werror -Wextra
 GCOV = --coverage
