@@ -1,12 +1,12 @@
 # Project based on Qt lib on Qt Creator
 # On Ubumtu some lib need to install
 # sudo apt install build-essential mesa-common-dev cmake clang qtcreator 
-# qt6-base-dev qml-qt6
+# qt6-base-dev qml-qt6 qt6-wayland
 # Some commands must be used
 # sudo update-alternatives --install /usr/bin/qmake qmake /usr/bin/qmake6 100
 # sudo update-alternatives --config qmake
 # 
-# 
+# May some of this not need
 # 
 # 
 
