@@ -15,15 +15,19 @@ SOURCES += \
     ../model/s21_aff_transform.cc \
     ../model/s21_facade_obj.cc \
     ../model/s21_parser_obj.cc \
+    logo.cpp \
     main.cc \
-    mainwindow.cc
+    mainwindow.cc \
+    scenegl.cpp
 
 HEADERS += \
     ../controller/s21_controller_obj.h \
     ../model/s21_aff_transform.h \
     ../model/s21_facade_obj.h \
     ../model/s21_parser_obj.h \
-    mainwindow.h
+    logo.h \
+    mainwindow.h \
+    scenegl.h
 
 FORMS += \
     mainwindow.ui

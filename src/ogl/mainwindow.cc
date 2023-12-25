@@ -24,4 +24,5 @@ void MainWindow::on_pushButtonFile_clicked() {
       qDebug() << "Parce or file fail.";
     }
   }
+  ui->openGLWidget->update();
 }
