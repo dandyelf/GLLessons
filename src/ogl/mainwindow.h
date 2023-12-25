@@ -23,7 +23,6 @@ class MainWindow : public QMainWindow {
   void SetControllerObj(s21::Controller *controller_obj) {
     controller_obj_ = controller_obj;
   }
-  void Draw();
 
  private slots:
   void on_pushButtonFile_clicked();
