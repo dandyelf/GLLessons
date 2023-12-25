@@ -32,3 +32,4 @@
 build
 src/tests/obj/mustang.obj
 src/tests/obj/toothless.obj
+src/ogl/ogl.pro.user
