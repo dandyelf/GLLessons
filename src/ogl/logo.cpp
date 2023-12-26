@@ -28,10 +28,13 @@ Logo::Logo(std::vector<GLfloat> vector) {
     CreateLogo(vector);
 }
 
-Logo::Logo(std::vector<double> vector, std::vector<int> facets)
+Logo::Logo(const s21::ObjT* obj)
 {
-  for(auto item : facets) {
-    m_data.push_back(vector[item]);
+    double coefficient = 0.1;
+    if(obj->max_el_ > 1 || -1 > obj->max_el_) coefficient = 1/obj->max_el_;
+
+  for(auto item : obj->polygon_vector) {
+    m_data.push_back(obj->vertex_vector[item] * coefficient);
     m_count++;
   }
 }

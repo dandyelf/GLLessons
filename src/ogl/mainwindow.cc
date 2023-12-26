@@ -34,6 +34,6 @@ void MainWindow::on_pushButtonFile_clicked() {
       vector[i] = -0.14f;
     }
   }
-  logo_ = new Logo(obj_->vertex_vector, obj_->polygon_vector);
+  logo_ = new Logo(obj_);
   ui->openGLWidget->LoadLogo(logo_);
 }

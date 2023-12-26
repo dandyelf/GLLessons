@@ -6,12 +6,14 @@
 #include <QVector3D>
 #include <vector>
 
+#include "../model/s21_parser_obj.h"
+
 class Logo
 {
 public:
     Logo();
     Logo(std::vector<GLfloat> vector);
-    Logo(std::vector<double> vector, std::vector<int> facets);
+    Logo(const s21::ObjT* obj);
     const GLfloat *constData() const { return m_data.constData(); }
     int count() const { return m_count; }
     int vertexCount() const { return m_count / 6; }
