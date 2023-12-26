@@ -2,6 +2,7 @@
 
 #include "logo.h"
 #include <qmath.h>
+#include <QDebug>
 
 Logo::Logo() {
     std::vector<GLfloat> vector(8);
@@ -31,12 +32,20 @@ Logo::Logo(std::vector<GLfloat> vector) {
 Logo::Logo(const s21::ObjT* obj)
 {
     double coefficient = 0.1;
-    if(obj->max_el_ > 1 || -1 > obj->max_el_) coefficient = 1/obj->max_el_;
+    if(obj->max_el_ > 1 || -1 > obj->max_el_) coefficient = 1/obj->max_el_/3;
 
   for(auto item : obj->polygon_vector) {
-    m_data.push_back(obj->vertex_vector[item] * coefficient);
-    m_count++;
+
+    m_data.push_back(obj->vertex_vector[item*3] * coefficient);
+    m_data.push_back(obj->vertex_vector[item*3+1] * coefficient);
+    m_data.push_back(obj->vertex_vector[item*3+2] * coefficient);
+    m_count += 3;
   }
+
+      for(size_t i = 0; i < 40; i++) {
+        qDebug() << m_data[i];
+        if(i + 1 % 6 == 0) qDebug() << "\n";
+    }
 }
 
 void Logo::CreateLogo(std::vector<GLfloat> vector)
@@ -86,6 +95,10 @@ void Logo::CreateLogo(std::vector<GLfloat> vector)
 
         extrude(x6, y6, x7, y7);
         extrude(x8, y8, x5, y5);
+    }
+        for(size_t i = 0; i < 40; i++) {
+        qDebug() << m_data[i];
+        if((i + 1) % 6 == 0) qDebug() << "\n";
     }
 }
 

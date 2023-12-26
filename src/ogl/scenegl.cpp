@@ -260,7 +260,6 @@ void SceneGL::mouseMoveEvent(QMouseEvent *event)
 {
     int dx = event->position().toPoint().x() - m_lastPos.x();
     int dy = event->position().toPoint().y() - m_lastPos.y();
-
     if (event->buttons() & Qt::LeftButton) {
         setXRotation(m_xRot + 8 * dy);
         setYRotation(m_yRot + 8 * dx);
