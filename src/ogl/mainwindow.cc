@@ -26,14 +26,13 @@ void MainWindow::on_pushButtonFile_clicked() {
   }
   
   std::vector<GLfloat>vector(8);
-  size_t i = 1;
-  for(auto item : vector) {
-    if(i % 2 == 0) {
-      item = 0.14f;
+
+  for(size_t i = 0; i < vector.size(); i++) {
+    if((i + 1) % 2 == 0) {
+      vector[i] = 0.14f;
     } else {
-      item = -0.14f;
+      vector[i] = -0.14f;
     }
-    i++;
   }
   logo_ = new Logo(vector);
   ui->openGLWidget->LoadLogo(logo_);

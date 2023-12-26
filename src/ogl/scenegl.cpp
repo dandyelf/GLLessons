@@ -26,7 +26,12 @@ void SceneGL::LoadLogo(Logo* new_logo){
     m_logoVbo.destroy();
     m_logo = new_logo;
     VboInit();
+    m_vao.destroy();
+    m_vao.create();
+    QOpenGLVertexArrayObject::Binder vaoBinder(&m_vao);
+    setupVertexAttribs();
     doneCurrent();
+    update();
 }
 
 SceneGL::~SceneGL()
