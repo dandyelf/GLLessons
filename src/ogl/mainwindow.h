@@ -14,6 +14,8 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class Logo;
+
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
@@ -31,6 +33,7 @@ class MainWindow : public QMainWindow {
   Ui::MainWindow *ui;
   s21::Controller *controller_obj_;
   const s21::ObjT *obj_;
+  Logo* logo_;
   // Private methods
 };
 #endif  // MAINWINDOW_H_

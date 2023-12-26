@@ -3,10 +3,8 @@
 #include "logo.h"
 #include <qmath.h>
 
-Logo::Logo()
-{
-    m_data.resize(2500 * 6);
-
+Logo::Logo() {
+    std::vector<GLfloat> vector(8);
     const GLfloat x1 = +0.06f;
     const GLfloat y1 = -0.14f;
     const GLfloat x2 = +0.14f;
@@ -15,6 +13,33 @@ Logo::Logo()
     const GLfloat y3 = +0.00f;
     const GLfloat x4 = +0.30f;
     const GLfloat y4 = +0.22f;
+    vector[0] = x1;
+    vector[1] = y1;
+    vector[2] = x2;
+    vector[3] = y2;
+    vector[4] = x3;
+    vector[5] = y3;
+    vector[6] = x4;
+    vector[7] = y4;
+    CreateLogo(vector);
+}
+
+Logo::Logo(std::vector<GLfloat> vector) {
+    CreateLogo(vector);
+}
+
+void Logo::CreateLogo(std::vector<GLfloat> vector)
+{
+    m_data.resize(2500 * 6);
+
+    const GLfloat x1 = vector[0];
+    const GLfloat y1 = vector[1];
+    const GLfloat x2 = vector[2];
+    const GLfloat y2 = vector[3];
+    const GLfloat x3 = vector[4];
+    const GLfloat y3 = vector[5];
+    const GLfloat x4 = vector[6];
+    const GLfloat y4 = vector[7];
 
     quad(x1, y1, x2, y2, y2, x2, y1, x1);
     quad(x3, y3, x4, y4, y4, x4, y3, x3);

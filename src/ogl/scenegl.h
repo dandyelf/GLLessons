@@ -16,6 +16,7 @@ class SceneGL : public QOpenGLWidget, protected QOpenGLFunctions
 
 public:
     SceneGL(QWidget *parent = nullptr);
+    void LoadLogo(Logo *new_logo);
     ~SceneGL();
 
     static bool isTransparent() { return m_transparent; }
@@ -37,6 +38,7 @@ signals:
 
 protected:
     void initializeGL() override;
+    void VboInit();
     void paintGL() override;
     void resizeGL(int width, int height) override;
     void mousePressEvent(QMouseEvent *event) override;
@@ -50,7 +52,7 @@ private:
     int m_yRot = 0;
     int m_zRot = 0;
     QPoint m_lastPos;
-    Logo m_logo;
+    Logo* m_logo;
     QOpenGLVertexArrayObject m_vao;
     QOpenGLBuffer m_logoVbo;
     QOpenGLShaderProgram *m_program = nullptr;

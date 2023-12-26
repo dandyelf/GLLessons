@@ -24,5 +24,17 @@ void MainWindow::on_pushButtonFile_clicked() {
       qDebug() << "Parce or file fail.";
     }
   }
-  ui->openGLWidget->update();
+  
+  std::vector<GLfloat>vector(8);
+  size_t i = 1;
+  for(auto item : vector) {
+    if(i % 2 == 0) {
+      item = 0.14f;
+    } else {
+      item = -0.14f;
+    }
+    i++;
+  }
+  logo_ = new Logo(vector);
+  ui->openGLWidget->LoadLogo(logo_);
 }

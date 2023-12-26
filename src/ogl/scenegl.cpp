@@ -18,6 +18,15 @@ SceneGL::SceneGL(QWidget *parent)
         fmt.setAlphaBufferSize(8);
         setFormat(fmt);
     }
+    m_logo = new Logo;
+}
+
+void SceneGL::LoadLogo(Logo* new_logo){
+    makeCurrent();
+    m_logoVbo.destroy();
+    m_logo = new_logo;
+    VboInit();
+    doneCurrent();
 }
 
 SceneGL::~SceneGL()
@@ -141,6 +150,7 @@ static const char *fragmentShaderSource =
 
 void SceneGL::initializeGL()
 {
+    qDebug() << "initializeGL";
     // In this example the widget's corresponding top-level window can change
     // several times during the widget's lifetime. Whenever this happens, the
     // QOpenGLWidget's associated context is destroyed and a new one is created.
@@ -174,10 +184,7 @@ void SceneGL::initializeGL()
     QOpenGLVertexArrayObject::Binder vaoBinder(&m_vao);
 
     // Setup our vertex buffer object.
-    m_logoVbo.create();
-    m_logoVbo.bind();
-    m_logoVbo.allocate(m_logo.constData(), m_logo.count() * sizeof(GLfloat));
-
+    VboInit();
     // Store the vertex attribute bindings for the program.
     setupVertexAttribs();
 
@@ -189,6 +196,12 @@ void SceneGL::initializeGL()
     m_program->setUniformValue(m_lightPosLoc, QVector3D(0, 0, 70));
 
     m_program->release();
+}
+
+void SceneGL::VboInit() {
+    m_logoVbo.create();
+    m_logoVbo.bind();
+    m_logoVbo.allocate(m_logo->constData(), m_logo->count() * sizeof(GLfloat));
 }
 
 void SceneGL::setupVertexAttribs()
@@ -222,7 +235,7 @@ void SceneGL::paintGL()
     QMatrix3x3 normalMatrix = m_world.normalMatrix();
     m_program->setUniformValue(m_normalMatrixLoc, normalMatrix);
 
-    glDrawArrays(GL_TRIANGLES, 0, m_logo.vertexCount());
+    glDrawArrays(GL_TRIANGLES, 0, m_logo->vertexCount());
 
     m_program->release();
 }
