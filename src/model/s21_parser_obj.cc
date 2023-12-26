@@ -68,9 +68,22 @@ void ParserObj::ParsLineFacet(std::istringstream& iss) {
   while (iss >> tmp) {
     tmp_vec.push_back(std::stoi(tmp));
   }
-  if (tmp_vec.size() > 2) {
+  if (tmp_vec.size() > 3) {
+    // ToTriangles(tmp_vec); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  } else if (tmp_vec.size() > 2) {
     SortInsert(tmp_vec);
-  }  // else push error if need
+  }
+  // else push error if need
+}
+
+void ParserObj::ToTriangles(std::vector<int> vect) {
+  std::vector<int> tmp_vec(3);
+  int a = 0, b = 0, c = 0, i = 0;
+  a = vect[0];
+
+  for(auto elem : vect) {
+    tmp_vec[i] = elem;
+  }
 }
 
 void ParserObj::SortInsert(const std::vector<int>& in) {

@@ -39,7 +39,8 @@ class ParserObj {
   void ParsLineVertex(std::istringstream& iss);
   void InitObj();
   void ParsLineFacet(std::istringstream& iss);
-  void SortInsert(const std::vector<int>& in);
+  void ToTriangles(std::vector<int> vect);
+  void SortInsert(const std::vector<int> &in);
   void PutOutVector(int a);
 
  private:
