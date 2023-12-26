@@ -11,6 +11,7 @@ class Logo
 public:
     Logo();
     Logo(std::vector<GLfloat> vector);
+    Logo(std::vector<double> vector, std::vector<int> facets);
     const GLfloat *constData() const { return m_data.constData(); }
     int count() const { return m_count; }
     int vertexCount() const { return m_count / 6; }

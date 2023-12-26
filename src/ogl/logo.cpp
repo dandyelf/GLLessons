@@ -28,6 +28,14 @@ Logo::Logo(std::vector<GLfloat> vector) {
     CreateLogo(vector);
 }
 
+Logo::Logo(std::vector<double> vector, std::vector<int> facets)
+{
+  for(auto item : facets) {
+    m_data.push_back(vector[item]);
+    m_count++;
+  }
+}
+
 void Logo::CreateLogo(std::vector<GLfloat> vector)
 {
     m_data.resize(2500 * 6);
