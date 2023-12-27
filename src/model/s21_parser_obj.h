@@ -19,11 +19,11 @@ class ObjT {
  public:
   ~ObjT(){};
   std::vector<int> polygon_vector{};
-  std::vector<double> vertex_vector{};
+  std::vector<float> vertex_vector{};
   int count_of_vertexes{};
   int count_of_facets{};
-  double max_el_{};
-  double min_el_{};
+  float max_el_{};
+  float min_el_{};
 
  private:
   ObjT(){};
