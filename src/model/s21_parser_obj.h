@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+
 namespace s21 {
 
 class ObjT {
@@ -39,7 +40,7 @@ class ParserObj {
   void ParsLineVertex(std::istringstream& iss);
   void InitObj();
   void ParsLineFacet(std::istringstream& iss);
-  void ToTriangles(std::vector<int> vect);
+  void ToTriangles(std::vector<int>& vect);
   void SortInsert(const std::vector<int> &in);
   void PutOutVector(int a);
 
