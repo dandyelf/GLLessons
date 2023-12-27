@@ -18,7 +18,7 @@ class ObjT {
 
  public:
   ~ObjT(){};
-  std::vector<int> polygon_vector{};
+  std::vector<size_t> polygon_vector{};
   std::vector<float> vertex_vector{};
   size_t count_of_vertexes{};
   size_t count_of_facets{};

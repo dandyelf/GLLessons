@@ -53,7 +53,7 @@ void ParserObj::InitObj() {
     if (obj_->max_el_ < element) obj_->max_el_ = element;
     if (obj_->min_el_ > element) obj_->min_el_ = element;
   }
-  int max_vertex = obj_->polygon_vector[0];
+  size_t max_vertex = obj_->polygon_vector[0];
   for (auto element : obj_->polygon_vector) {
     if (max_vertex < element) max_vertex = element;
   }

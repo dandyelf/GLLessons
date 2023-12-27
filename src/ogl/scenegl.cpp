@@ -141,6 +141,7 @@ static const char *vertexShaderSource =
     "   gl_Position = projMatrix * mvMatrix * vertex;\n"
     "}\n";
 
+// Color
 static const char *fragmentShaderSource =
     "varying highp vec3 vert;\n"
     "varying highp vec3 vertNormal;\n"
@@ -148,14 +149,14 @@ static const char *fragmentShaderSource =
     "void main() {\n"
     "   highp vec3 L = normalize(lightPos - vert);\n"
     "   highp float NL = max(dot(normalize(vertNormal), L), 0.0);\n"
-    "   highp vec3 color = vec3(0.39, 1.0, 0.0);\n"
+    "   highp vec3 color = vec3(0.0, 0.0, 1.0);\n"
     "   highp vec3 col = clamp(color * 0.2 + color * 0.8 * NL, 0.0, 1.0);\n"
     "   gl_FragColor = vec4(col, 1.0);\n"
     "}\n";
 
 void SceneGL::initializeGL()
 {
-    qDebug() << "initializeGL";
+//    qDebug() << "initializeGL";
     // In this example the widget's corresponding top-level window can change
     // several times during the widget's lifetime. Whenever this happens, the
     // QOpenGLWidget's associated context is destroyed and a new one is created.
@@ -166,7 +167,7 @@ void SceneGL::initializeGL()
     connect(context(), &QOpenGLContext::aboutToBeDestroyed, this, &SceneGL::cleanup);
 
     initializeOpenGLFunctions();
-    glClearColor(0, 0, 0, m_transparent ? 0 : 1);
+    glClearColor(0.2, 0.2, 0.2, m_transparent ? 0 : 1);
 
     m_program = new QOpenGLShaderProgram;
     m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, m_core ? vertexShaderSourceCore : vertexShaderSource);
