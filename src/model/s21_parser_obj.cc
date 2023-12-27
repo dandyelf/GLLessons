@@ -90,8 +90,8 @@ void ParserObj::ToTriangles(std::vector<int>& vect) {
 }
 
 void ParserObj::SortInsert(const std::vector<int>& in) {
-  // for (size_t i = 0; i < in.size(); i++) {  // For GL_LINES
-  //   for (size_t j = i; j <= i + 1 && (j + 1) <= in.size(); j++) {
+  // for (size_t i = 0; i < in.size(); i++) {
+  //   for (size_t j = i; j <= i + 1 && (j + 1) <= in.size(); j++) {  // For GL_LINES
   //     PutOutVector(in[j]);
   //   }
   // }
