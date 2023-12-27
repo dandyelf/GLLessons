@@ -20,20 +20,10 @@ void MainWindow::on_pushButtonFile_clicked() {
       controller_obj_->OpenObj(string);
       qDebug() << "File OK" << string.c_str() << QDate::currentDate();
       obj_ = controller_obj_->GetObject();
+      logo_ = new Logo(obj_);
+      ui->openGLWidget->LoadLogo(logo_);
     } catch (std::exception &e) {
       qDebug() << "Parce or file fail.";
     }
   }
-  
-  std::vector<GLfloat>vector(8);
-
-  for(size_t i = 0; i < vector.size(); i++) {
-    if((i + 1) % 2 == 0) {
-      vector[i] = 0.14f;
-    } else {
-      vector[i] = -0.14f;
-    }
-  }
-  logo_ = new Logo(obj_);
-  ui->openGLWidget->LoadLogo(logo_);
 }

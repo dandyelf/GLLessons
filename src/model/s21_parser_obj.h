@@ -20,8 +20,8 @@ class ObjT {
   ~ObjT(){};
   std::vector<int> polygon_vector{};
   std::vector<float> vertex_vector{};
-  int count_of_vertexes{};
-  int count_of_facets{};
+  size_t count_of_vertexes{};
+  size_t count_of_facets{};
   float max_el_{};
   float min_el_{};
 
@@ -41,7 +41,7 @@ class ParserObj {
   void InitObj();
   void ParsLineFacet(std::istringstream& iss);
   void ToTriangles(std::vector<int>& vect);
-  void SortInsert(const std::vector<int> &in);
+  void SortInsert(const std::vector<int>& in);
   void PutOutVector(int a);
 
  private:

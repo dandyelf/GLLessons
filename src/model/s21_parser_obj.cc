@@ -69,7 +69,7 @@ void ParserObj::ParsLineFacet(std::istringstream& iss) {
     tmp_vec.push_back(std::stoi(tmp));
   }
   if (tmp_vec.size() > 3) {
-    ToTriangles(tmp_vec); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ToTriangles(tmp_vec);  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   } else if (tmp_vec.size() > 2) {
     SortInsert(tmp_vec);
   }  // else push error if need
@@ -77,11 +77,11 @@ void ParserObj::ParsLineFacet(std::istringstream& iss) {
 
 void ParserObj::ToTriangles(std::vector<int>& vect) {
   std::vector<int> tmp_vec(3);
-    tmp_vec[0] = vect[0];
-    tmp_vec[1] = vect[1];
-    tmp_vec[2] = vect[2];
-    SortInsert(tmp_vec);
-  for(size_t i = 2; i < vect.size(); i++) {
+  tmp_vec[0] = vect[0];
+  tmp_vec[1] = vect[1];
+  tmp_vec[2] = vect[2];
+  SortInsert(tmp_vec);
+  for (size_t i = 2; i < vect.size(); i++) {
     tmp_vec[0] = vect[0];
     tmp_vec[1] = vect[i - 1];
     tmp_vec[2] = vect[i];
@@ -91,7 +91,8 @@ void ParserObj::ToTriangles(std::vector<int>& vect) {
 
 void ParserObj::SortInsert(const std::vector<int>& in) {
   // for (size_t i = 0; i < in.size(); i++) {
-  //   for (size_t j = i; j <= i + 1 && (j + 1) <= in.size(); j++) {  // For GL_LINES
+  //   for (size_t j = i; j <= i + 1 && (j + 1) <= in.size(); j++) {  // For
+  //   GL_LINES
   //     PutOutVector(in[j]);
   //   }
   // }
